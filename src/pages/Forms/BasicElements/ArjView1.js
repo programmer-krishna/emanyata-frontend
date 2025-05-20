@@ -165,7 +165,7 @@ useEffect(() => {
                     <Row className="my-2">
                         <Col style={{ fontSize:"14px" }} >
                             <h1 className="fs-5 mb-3 fw-bold"> 
-                                अर्ज तपशील - {schoolDetails.name || " "} ({schoolDetails.udise || " "})
+                                अर्ज तपशील -{schoolDetails.name || " "} ({schoolDetails.udise || " "})
                             </h1>
                             <p className='fw-semibold mb-1'><strong>Inspection Officer Details:</strong></p>
                             <p className='fw-semibold mb-1'>Name: Sunanda Wakhare</p>
