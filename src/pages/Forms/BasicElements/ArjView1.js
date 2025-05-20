@@ -114,28 +114,57 @@ const ArjView1 = () => {
 
     
 
-const [schoolId, setSchoolId] = useState(1); // sample schoolId; can be dynamic
+const [schoolId, setSchoolId] = useState(3); // sample schoolId; can be dynamic
 const [udiseNo, setUdiseNo] = useState(32345678178); // sample udiseNo; can be dynamic
 
-const [schoolGenInfoId, setSchoolGenInfoId] = useState(3);   // sample id ; can be dynamic 
+const [userId, setUserId] = useState(4);   // sample id ; can be dynamic 
 
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
 
-const [manjurShalaListInfo, setManjurShalaListInfo] = useState({
-  id: "",
-  shashanPatr: "",
-  shashanmanyata: "",
-});
+const [inspectionData, setInspectionData] = useState([
+  {
+    id: "",
+    userId: "",
+    schoolId: "",
+    applyStatus: "",
+    token: "",
+    status: "",
+    inspectionStatus: "",
+    inspectionCompletionDate: "",
+    applicationNo: "",
+    visitingDate: "",
+    inspectionOfficeId: "",
+    submittedDate: "",
+    approvedDate: "",
+    expiredDate: "",
+    renewDate: "",
+    steps: "",
+    turtiPdf: "",
+    tipaniPdf: "",
+    schoolInspectionPdf: "",
+    docAvailableVerified: false,
+    rte2009Followed: false,
+    namuna2Doc: false,
+    officerComment: "",
+    abhiprayPdf: "",
+    createdAt: "",
+    updatedAt: "",
+  },
+]);
+
 
 
 
 useEffect(() => {
-    const fetchManjurShalaListInfo = async () => {
+    const fetchInspectionData = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/school-general-info/' + schoolGenInfoId);
-            console.log(response.data);
-            setManjurShalaListInfo(response.data);
+            const response = await axios.post(`http://localhost:8080/api/school-apply/details?schoolId=${schoolId}`);
+            console.log(response);
+            console.log("response.data", response.data);
+            console.log("response.data[0]", response.data[0]);
+            //setInspectionData(response);
+          
             setLoading(false);
         } catch (err) {
             console.error("Error fetching student data:", err);
@@ -144,8 +173,8 @@ useEffect(() => {
         }
     };
 
-    fetchManjurShalaListInfo();
-}, [schoolGenInfoId]);
+    fetchInspectionData();
+}, [schoolId]);
 
 
 
@@ -266,7 +295,7 @@ useEffect(() => {
                                     </thead>
                                     <tbody>
                                       <tr>
-                                      <td>शाळेस मान्यता विपयक सर्व कागदपत्रे उपलब्ध आहेत?</td>
+                                      <td>शाळेस मान्यता विषयक सर्व कागदपत्रे उपलब्ध आहेत?</td>
                                       <td>-</td>
                                       </tr>
                                       <tr>
