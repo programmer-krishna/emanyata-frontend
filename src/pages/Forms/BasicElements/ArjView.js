@@ -117,9 +117,9 @@ const [images, setImages] = useState({});
 
 // schoolInfo backend integration 
 
-  const [schoolId, setSchoolId] = useState(1); // sample schoolId; can be dynamic
-  const [udiseNo, setUdiseNo] = useState(32345678178); // sample udiseNo; can be dynamic
-  const [schoolGenInfoId, setSchoolGenInfoId] = useState(3);   // sample id ; can be dynamic 
+  const [schoolId, setSchoolId] = useState(3); // sample schoolId; can be dynamic
+  const [udiseNo, setUdiseNo] = useState(32345678177); // sample udiseNo; can be dynamic
+//const [schoolGenInfoId, setSchoolGenInfoId] = useState(3);   // sample id ; can be dynamic 
   
 
   const [loading, setLoading] = useState(true);
@@ -243,7 +243,7 @@ const [schoolGenInfo, setSchoolGenInfo] = useState({
 useEffect(() => {
     const fetchSchoolGenInfo = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/school-general-info/' + schoolGenInfoId);
+            const response = await axios.post('http://localhost:8080/api/school-general-info/' + schoolId);
             console.log(response.data);
             setSchoolGenInfo(response.data);
             setLoading(false);
@@ -255,7 +255,7 @@ useEffect(() => {
     };
 
     fetchSchoolGenInfo();
-}, [schoolGenInfoId]);
+}, [schoolId]);
 
 
 
